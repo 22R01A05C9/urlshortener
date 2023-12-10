@@ -43,6 +43,9 @@
         <h4>Your Shortened Link is <strong>"{{result}}"</strong></h4>
         <button type="button" onclick="copylink()" class="copy">Click To Copy</button>
         {% endif %}
+        {% if not result %}
+        <a href="/add-custom-url">Click Here To Add Custom Link</a>
+        {% endif %}
     </div>
 </body>
 

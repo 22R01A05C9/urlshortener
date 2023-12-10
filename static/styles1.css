@@ -15,23 +15,16 @@ h2 {
     top: 10px;
 }
 
-.from {
+.main {
     position: relative;
-    top: 35px;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
+    top: 150px;
 }
 
-form {
-    text-align: center;
-}
-
-p {
+.longp {
     font-weight: bold;
-    font-family: 'Poppins', sans-serif;
 }
 
-input {
+.longinput {
     font-family: 'Poppins', sans-serif;
     outline: none;
     border: none;
@@ -41,13 +34,32 @@ input {
     top: 7px;
     padding: 10px;
     border-radius: 6px;
-
 }
 
-button {
-    font-family: 'Poppins', sans-serif;
+.customp {
+    font-weight: bold;
     position: relative;
-    top: 7px;
+    top: 25px;
+}
+
+.custominput {
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    border: none;
+    height: 25px;
+    width: 70%;
+    position: relative;
+    top: 30px;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.submitb {
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    top: 153px;
+    left: 50%;
+    transform: translate(-50%, 0%);
     border-radius: 4px;
     padding: 4px 6px;
     text-align: center;
@@ -63,45 +75,30 @@ button:hover {
     color: wheat;
 }
 
-.info {
-    color: #5fff43;
+.output h4 {
     position: relative;
-    top: 55px;
-    font-size: large;
+    top: 100px;
 }
 
-h4 {
-    position: relative;
-    top: 62px;
-}
-
-.copy {
-    top: 70px;
-    padding: 2px 5px;
+.output button {
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    top: 290px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    border-radius: 4px;
+    padding: 4px 6px;
+    text-align: center;
+    font-weight: bold;
+    border: none;
     font-size: small;
     background-image: none;
     background-color: white;
     color: black;
 }
 
-.copy:hover {
+.output button:hover{
     background-color: black;
     color: white;
 }
 
-.main {
-    position: relative;
-    top: 115px;
-}
-
-a{
-    display: inline-block;
-    position: relative;
-    top:70px;
-    text-decoration: none;
-    color: white;
-    background-color: #ffac37b8;
-    padding: 3px 5px;
-    font-size: 11px;
-    border-radius: 10px;
-}

@@ -1,4 +1,4 @@
-from flask import Flask,render_template,redirect,request,render_template_string
+from flask import Flask,render_template,redirect,request,render_template_string,url_for
 import random,string
 app=Flask(__name__)
 data={}
@@ -31,5 +31,19 @@ def redirect_function(shorturl):
     else:
         return render_template_string('PageNotFound {{ errorCode }}', errorCode='404'), 404
     
+    
+@app.route('/add-custom-url', methods=["POST", "GET"])
+def add_custom():
+    if request.method=="POST":
+        longurl=request.form['url']
+        custom=request.form['custom']
+        if custom in data.keys():
+            return render_template('custom.html',info="Custom Link Already Exists Try Using Another Keyword")
+        else:
+            data[custom]=longurl
+            shortnedlink=request.url_root+custom
+            return render_template('custom.html',result=shortnedlink,info="URL Successfully Generated")
+    else:
+        return render_template('custom.html')
 if __name__=='__main__':
     app.run()
