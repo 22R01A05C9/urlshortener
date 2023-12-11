@@ -1,9 +1,10 @@
 from flask import Flask,render_template,redirect,request,render_template_string,url_for
-import random,string
+import random,string,json
 app=Flask(__name__)
 data={}
 
 def shortner(longurl):
+    data=json.loads(open('/etc/secrets/data','r').read())
     shorturl=""
     chars=string.ascii_letters + string.digits
     for _ in range(6):
@@ -12,6 +13,8 @@ def shortner(longurl):
         shortner(longurl)
     else:
         data[shorturl]=longurl
+        with open('/etc/secrets/data','w') as file:
+            file.write(str(data).replace("'",'"'))
     return shorturl
         
 @app.route('/', methods=["POST", "GET"])
@@ -26,6 +29,7 @@ def main():
 
 @app.route('/<shorturl>')
 def redirect_function(shorturl):
+    data=json.loads(open('/etc/secrets/data','r').read())
     if shorturl in data:
         return redirect(data[shorturl])
     else:
@@ -34,6 +38,7 @@ def redirect_function(shorturl):
     
 @app.route('/add-custom-url', methods=["POST", "GET"])
 def add_custom():
+    data=json.loads(open('/etc/secrets/data','r').read())
     if request.method=="POST":
         longurl=request.form['url']
         custom=request.form['custom']
@@ -42,8 +47,10 @@ def add_custom():
         else:
             data[custom]=longurl
             shortnedlink=request.url_root+custom
+            with open('/etc/secrets/data','w') as file:
+                file.write(str(data).replace("'",'"'))
             return render_template('custom.html',result=shortnedlink,info="URL Successfully Generated")
     else:
         return render_template('custom.html')
 if __name__=='__main__':
-    app.run()
+    app.run(debug=True)
